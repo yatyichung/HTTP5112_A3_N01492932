@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HTTP5112_A3_YatYiChung.Models;
+using System.Diagnostics;
 
 namespace HTTP5112_A3_YatYiChung.Controllers
 {
@@ -18,14 +19,19 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
         //Get: Teacher/List
         //showing a page of all authors in the system
-        public ActionResult List()
+
+        [Route("Teacher/List/{SearchKey}")]
+        public ActionResult List(string SearchKey)
         {
+
+            //debugging message to see if we have gathererd the key
+            Debug.WriteLine("The key is " + SearchKey);
 
             //connect to our data access layer
             //get our teachers
             //pass the teachers to the view Teacher/List.cshtml
             TeacherDataController controller = new TeacherDataController();
-            IEnumerable <Teacher> Teacher= controller.ListTeachers(); 
+            IEnumerable <Teacher> Teacher= controller.ListTeachers(SearchKey); 
 
             return View(Teacher);
 
@@ -38,7 +44,7 @@ namespace HTTP5112_A3_YatYiChung.Controllers
         {
 
             TeacherDataController controller = new TeacherDataController();
-            Teacher SelectedTeacher = controller.FindTeacherById(id);
+            Teacher SelectedTeacher = controller.FindTeacher(id);
 
 
 

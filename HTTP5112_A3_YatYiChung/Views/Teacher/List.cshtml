@@ -6,8 +6,16 @@
     ViewBag.Title = "List";
 }
 
-<h2>You want to list teachers!</h2>
+
 <div>There are @Model.Count() teachers in the system.</div>
+<div>
+    <form action="/Teacher/List" method="GET">
+        <input type="text" name="SearchKey" placeholder="Search by firstname/lastname/hiredate/salary.." style="width:800px; font-size:13px;" />
+        <input type="submit" value="Search" />
+    </form>
+</div>
+
+
 <div>
     @{
         foreach (HTTP5112_A3_YatYiChung.Models.Teacher Teacher in Model)
