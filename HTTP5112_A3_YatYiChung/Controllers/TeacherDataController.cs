@@ -22,6 +22,9 @@ namespace HTTP5112_A3_YatYiChung.Controllers
         /// <param name="SearchKey">Search ket (optional) of teacher name</param>
         /// <example>GET api/teacherdata/listteachers </example>
         /// <example>GET api/teacherdata/listteachers/linda </example>
+        /// <example>GET api/teacherdata/listteachers/morris </example>
+        /// <example>GET api/teacherdata/listteachers/20160806 </example>
+        /// <example>GET api/teacherdata/listteachers/55.30 </example>
         /// <returns>
         /// A list of teacher object (including fname, id, lname)
         /// </returns>
@@ -50,7 +53,7 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
             if (SearchKey != null)
             {
-                query = query + " where lower(teacherfname)=lower(@input) OR lower(teacherlname)=lower(@input) OR hiredate LIKE '%(@input)%'";
+                query = query + " where lower(teacherfname)=lower(@input) OR lower(teacherlname)=lower(@input) OR hiredate=(@input)"; /// OR salary LIKE '%"+"(@input)"+"%'"
                 cmd.Parameters.AddWithValue("@input", SearchKey);
                 cmd.Prepare();
             }
