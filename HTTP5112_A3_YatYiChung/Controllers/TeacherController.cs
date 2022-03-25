@@ -8,6 +8,18 @@ using System.Diagnostics;
 
 namespace HTTP5112_A3_YatYiChung.Controllers
 {
+    /// <summary>
+    /// Connecting the API controller - TeacherDataController.cs with Views/Teacher/List.cshtml and Views/Teacher/Show.cshtml
+    /// </summary>
+    /// <param name="SearchKey">To look up a specific teacher</param>
+    /// <param name="id">To look up a specific teacher with teacherid</param>
+    /// <example>GET teacher/list </example>
+    /// <example>GET teacher/show/2 </example>
+    /// <returns>
+    /// 
+    /// </returns>
+
+
     public class TeacherController : Controller
     {
         // GET: Teacher
@@ -29,7 +41,7 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
             //connect to our data access layer
             //get our teachers
-            //pass the teachers to the view Teacher/List.cshtml
+            //pass the teachers to the view Teacher/List.cshtml with the parameter SearchKey
             TeacherDataController controller = new TeacherDataController();
             IEnumerable <Teacher> Teacher= controller.ListTeachers(SearchKey); 
 
@@ -38,10 +50,10 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
         }
 
-        //Get: /Teacher/Show/{id}
-        //[Route("/Teacher/Show/{TeacherId}")]
         public ActionResult Show(int id)
         {
+            //connect to our data access layer
+            //pass the SelectedTeacher to Teacher/Show.cshtml with the parameter id
 
             TeacherDataController controller = new TeacherDataController();
             Teacher SelectedTeacher = controller.FindTeacher(id);

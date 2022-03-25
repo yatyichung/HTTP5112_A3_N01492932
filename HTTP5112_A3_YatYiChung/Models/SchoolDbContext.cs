@@ -8,7 +8,9 @@ namespace HTTP5112_A3_YatYiChung.Models
 {
     public class SchoolDbContext
     {
-
+        /// <summary>
+        /// Connection between the SQL database to C#
+        /// </summary>
         private static string User { get { return "root"; } }
         private static string Password { get { return "root"; } }
         private static string Database { get { return "school"; } }
