@@ -1,4 +1,4 @@
-# HTTP5112_A3_YatYiChung
+# HTTP5112_A3_N01492932
 
 Built a minimun viable product (MVP) to read a MySql table using WebAPI and MVC architecture pattern. 
 <br>
