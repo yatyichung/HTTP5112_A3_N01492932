@@ -38,7 +38,7 @@ Include:
       </tr>
     <tr>
             <td>View</td>
-            <td>A View which uses server rendering to display teachers from the MySQL Database</td>
+            <td>A View which uses server rendering to display teachers from the MySQL Database.</td>
           <td><a href="https://github.com/yatyichung/HTTP5112_A3_N01492932/blob/master/HTTP5112_A3_YatYiChung/Views/Teacher/Show.cshtml">/Views/Teacher/Show.cshtml</a></td>
       </tr>
 </table>
