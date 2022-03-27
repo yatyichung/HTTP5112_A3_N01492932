@@ -23,7 +23,7 @@ Include:
       </tr>
      <tr>
             <td>Controller</td>
-            <td>A Controller which allows you to route to dynamic pages</td>
+            <td>A Controller which allows you to route to dynamic pages.</td>
            <td><a href="https://github.com/yatyichung/HTTP5112_A3_N01492932/blob/master/HTTP5112_A3_YatYiChung/Controllers/TeacherController.cs">/Controllers/TeacherController.cs</a></td>
       </tr>
    <tr>
