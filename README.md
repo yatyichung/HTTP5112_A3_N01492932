@@ -28,7 +28,7 @@ Include:
       </tr>
    <tr>
             <td>Model</td>
-            <td>A Model which allows you to represent information about a teacher</td>
+            <td>A Model which allows you to represent information about a teacher.</td>
          <td><a href="https://github.com/yatyichung/HTTP5112_A3_N01492932/blob/master/HTTP5112_A3_YatYiChung/Models/Teacher.cs">/Models/Teacher.cs</a></td>
       </tr>
    <tr>
