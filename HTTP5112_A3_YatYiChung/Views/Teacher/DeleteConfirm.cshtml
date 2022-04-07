@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<h2>DeleteConfirm</h2>
+
+<h2>Are you sure you want delete this teacher?</h2>
+
+
+
+<div>First Name: @Model.TeacherFName</div>
+<div>Last Name: @Model.TeacherLName</div>
+
+<form method="POST" action="/Teacher/Delete/@Model.TeacherId">
+    <input type="submit" value="DELETE" style="background-color:red;color:white;"/>
+</form>
+
+

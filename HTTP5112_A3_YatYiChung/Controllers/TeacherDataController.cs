@@ -84,7 +84,7 @@ namespace HTTP5112_A3_YatYiChung.Controllers
                 NewTeacher.TeacherFName = ResultSet["teacherfname"].ToString();
                 NewTeacher.TeacherLName = ResultSet["teacherlname"].ToString();
                 NewTeacher.EmployeeNumber = ResultSet["employeenumber"].ToString();
-                NewTeacher.Salary = Convert.ToInt32(ResultSet["salary"]);
+               // NewTeacher.Salary = Convert.ToInt32(ResultSet["salary"]);
                 NewTeacher.HireDate = ResultSet["hiredate"].ToString();
 
 
@@ -135,7 +135,7 @@ namespace HTTP5112_A3_YatYiChung.Controllers
                 SelectedTeacher.TeacherFName = ResultSet["teacherfname"].ToString();
                 SelectedTeacher.TeacherLName = ResultSet["teacherlname"].ToString();
                 SelectedTeacher.EmployeeNumber = ResultSet["employeenumber"].ToString();
-                SelectedTeacher.Salary = Convert.ToInt32(ResultSet["salary"]);
+                //SelectedTeacher.Salary = Convert.ToInt32(ResultSet["salary"]);
                 SelectedTeacher.HireDate = ResultSet["hiredate"].ToString();
 
 
@@ -146,6 +146,63 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
 
             return SelectedTeacher;
+        }
+
+        /// <summary>
+        /// Add a new teacher to the system given teacher information
+        /// </summary>
+        /// <paramref name="NewTeacher"/> The teacher information I want to add
+        /// 
+        public void AddTeacher(Teacher NewTeacher)
+        {
+            //create an instanse of connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //open the connection between the web server and database
+            Conn.Open();
+
+            //establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            string query = "insert into teachers (teacherfname, teacherlname, employeenumber, hiredate) values (@teacherfname,@teacherlname,@employeenumber,CURRENT_DATE())";
+
+            cmd.CommandText= query;
+
+            cmd.Parameters.AddWithValue("@teacherfname", NewTeacher.TeacherFName);
+            cmd.Parameters.AddWithValue("@teacherlname", NewTeacher.TeacherLName);
+            cmd.Parameters.AddWithValue("@employeenumber", NewTeacher.EmployeeNumber);
+
+            cmd.Prepare();
+                                       
+
+            cmd.ExecuteNonQuery();
+
+            Conn.Close ();
+        }
+
+        /// <summary>
+        /// Delete a teacher in the system
+        /// </summary>
+        /// <param name="TeacherId"> The primary key teacherid </param>
+
+        public void DeleteTeacher(int TeacherId)
+        {
+            //create an instanse of connection
+            MySqlConnection Conn = School.AccessDatabase();
+
+            //open the connection between the web server and database
+            Conn.Open();
+
+            //establish a new command (query) for our database
+            MySqlCommand cmd = Conn.CreateCommand();
+
+            string query = "delete from teachers where teacherid=@id";
+            cmd.Parameters.AddWithValue("@id",TeacherId);
+            cmd.CommandText = query;
+            cmd.Prepare();
+
+            cmd.ExecuteNonQuery();
+            Conn.Close(); 
         }
 
     }

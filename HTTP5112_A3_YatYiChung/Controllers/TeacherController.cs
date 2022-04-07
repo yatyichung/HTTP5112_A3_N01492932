@@ -50,6 +50,8 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
         }
 
+        //Get: /Teacher/Show/{id}
+        //[Route("/Teacher/Show/{TeacherId}")]
         public ActionResult Show(int id)
         {
             //connect to our data access layer
@@ -62,6 +64,73 @@ namespace HTTP5112_A3_YatYiChung.Controllers
 
             //route the single teacher info to show.cshtml
             return View(SelectedTeacher);
+        }
+
+
+
+        //Get: /Teacher/DeleteConfirm/{id}
+        //[Route("/Teacher/DeleteConfirm/{TeacherId}")]
+        public ActionResult DeleteConfirm(int id)
+        {
+            //connect to our data access layer
+            //pass the SelectedTeacher to Teacher/Show.cshtml with the parameter id
+
+            TeacherDataController controller = new TeacherDataController();
+            Teacher SelectedTeacher = controller.FindTeacher(id);
+
+
+
+            //route the single teacher info to show.cshtml
+            return View(SelectedTeacher);
+        }
+
+
+
+        //POST: /Teacher/Delete/{id}
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            TeacherDataController controller = new TeacherDataController();
+            controller.DeleteTeacher(id);
+            return RedirectToAction("List");
+
+        }
+
+
+
+
+
+
+
+        //Get: /Teacher/Add
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+
+        //POST: /Teacher/Create
+        [HttpPost]
+        public ActionResult Create(string teacherfname, string teacherlname, string employeenumber) 
+        {
+            Debug.WriteLine("the teacher info is :" + teacherfname + " " + teacherlname + " " + employeenumber);
+
+            Teacher NewTeacher = new Teacher();
+            NewTeacher.TeacherFName = teacherfname;
+            NewTeacher.TeacherLName = teacherlname;
+            NewTeacher.EmployeeNumber = employeenumber;
+
+
+            TeacherDataController controller = new TeacherDataController();
+            controller.AddTeacher(NewTeacher);
+
+            //we want to do the following:
+            //connect to a database
+            //insert into teachers
+            // with provided values
+
+            //redirect immediately to the list view
+            return RedirectToAction("List");
         }
 
 
