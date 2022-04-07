@@ -41,6 +41,11 @@ Include:
             <td>A View which uses server rendering to display teachers from the MySQL Database.</td>
           <td><a href="https://github.com/yatyichung/HTTP5112_A3_N01492932/blob/master/HTTP5112_A3_YatYiChung/Views/Teacher/Show.cshtml">/Views/Teacher/Show.cshtml</a></td>
       </tr>
+      <tr>
+            <td>View</td>
+            <td>A View which allows a to input information about a new teacher</td>
+          <td><a href="#">/Views/Teacher/Add.cshtml</a></td>
+      </tr>
 </table>
 
 
