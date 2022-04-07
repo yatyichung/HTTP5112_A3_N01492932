@@ -18,7 +18,7 @@ Include:
       </tr>
       <tr>
             <td>Controller</td>
-            <td>A WebAPI Controller which allows you to access information about teachers.</td>
+            <td>A WebAPI Controller which allows you to access information about teachers, add teachers, and remove teachers from the database</td>
         <td><a href="https://github.com/yatyichung/HTTP5112_A3_N01492932/blob/master/HTTP5112_A3_YatYiChung/Controllers/TeacherDataController.cs">/Controllers/TeacherDataController.cs</a></td>
       </tr>
      <tr>
