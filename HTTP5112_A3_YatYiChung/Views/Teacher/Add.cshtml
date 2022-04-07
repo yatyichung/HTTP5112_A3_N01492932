@@ -5,21 +5,71 @@
 
 <h2>Add Teacher Interface!</h2>
 
-<form method="POST" action="/Teacher/Create">
+<form method="POST" action="/Teacher/Create" name="myForm">
     <div>
         <label>First Name:</label>
         <input type="text" name="teacherfname" />
+        <p id="alertFName" style="display:none;color:red;">Invalid Input</p>
     </div>
     <div>
         <label>Last Name:</label>
         <input type="text" name="teacherlname" />
+        <p id="alertLName" style="display:none;color:red;">Invalid Input</p>
     </div>
     <div>
         <label>Employee Number:</label>
         <input type="text" name="employeenumber" />
+        <p id="alertENumber" style="display:none;color:red;">Invalid Input: must starts with T along with 4 numbers. EX: T1234</p>
     </div>
 
     <div>
         <input type="submit" value="Add Teacher" style="background-color:green;color:white;" />
     </div>
 </form>
+
+<!--Form Valudations-->
+<script>
+    window.onload = function () {
+        var formHandle = document.forms.myForm;
+        var alertBoxFName = document.getElementById("alertFName");
+        var alertBoxLName = document.getElementById("alertLName");
+        var alertBoxENumber = document.getElementById("alertENumber");
+
+        formHandle.onsubmit = processForm;
+
+        function processForm() {
+
+            var firstName = formHandle.teacherfname;
+
+            if (firstName.value === "" || firstName.value === null) {
+                firstName.focus();
+                alertBoxFName.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxFName.style.display = "none";
+            }
+
+            var lastName = formHandle.teacherlname;
+
+            if (lastName.value === "" || lastName.value === null) {
+                lastName.focus();
+                alertBoxLName.style.display = "inline-block";
+                return false;
+            } else {
+                alertBoxLName.style.display = "none";
+            }
+
+            var employeeNumber = formHandle.employeenumber;
+            var re = /^[Tt][0-9]{4}$/;
+
+            if (employeeNumber.value.match(re)) {
+                alertBoxENumber.style.display = "none";
+            } else {
+                employeeNumber.focus();
+                alertBoxENumber.style.display = "inline-block";
+                return false;
+            }
+
+        }
+    }
+</script>
