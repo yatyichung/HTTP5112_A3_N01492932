@@ -133,6 +133,48 @@ namespace HTTP5112_A3_YatYiChung.Controllers
             return RedirectToAction("List");
         }
 
+        /// <summary>
+        /// returns a webpage of the teacher
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //GET : /Teacher/Edit/{id}
+        public ActionResult Edit(int id)
+        {
+            //need to pass teacher info to the view to show that to the user
+            TeacherDataController controller = new TeacherDataController();
+            Teacher SelectedTeacher = controller.FindTeacher(id);
+
+            return View(SelectedTeacher);
+        }
+
+        /// <summary>
+        /// this method actually updates the teacher
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        //POST : /Teacher/Update/{id}
+        [HttpPost]
+        public ActionResult Update(int id, string TeacherFname, string TeacherLName, string EmployeeNumber)
+        {
+            Debug.WriteLine("The teacher name is " + TeacherFname);
+            Debug.WriteLine("The ID is " + id);
+
+            Teacher TeacherInfo = new Teacher();
+
+            TeacherInfo.TeacherFName = TeacherFname;
+            TeacherInfo.TeacherLName = TeacherLName;
+            TeacherInfo.EmployeeNumber = EmployeeNumber;
+
+
+            //update the teacher informaiton
+            TeacherDataController controller = new TeacherDataController();
+            controller.UpdateTeacher(id, TeacherInfo);
+
+            //return to the author I just changed
+            return RedirectToAction("Show/" + id);
+        }
+
 
     }
 }
